@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import {
   ScrollView,
+  StyleSheet,
   Text,
   View,
   Button
 } from 'react-native';
 
-import '../style.css'
+const styles = StyleSheet.create({
+  container: {
+    borderColor: 'crimson',
+    backgroundColor: 'crimson',
+    flex: 1,
+    height: 100,
+  },
+});
 
 export default class Secured extends Component {
 
@@ -52,7 +60,10 @@ export default class Secured extends Component {
             (
               this.state.probaResponceReceived)
               ? this.state.probaPoints.map((item) => {
-                return <View styleName='container' ><Text>{item.code} {item.name} {item.confirmUserId} {item.confirmDate}</Text></View>
+                return 
+                  <View style={styles.container} >
+                    <Text>{item.code} {item.name} {item.confirmUserId} {item.confirmDate}</Text>
+                  </View>
               })
               : <View style={{
                 flex: 1,
