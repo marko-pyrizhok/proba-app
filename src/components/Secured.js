@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  FlatList,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,10 +10,13 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: 'crimson',
-    backgroundColor: 'crimson',
     flex: 1,
-    height: 100,
+    paddingTop: 22
+   },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
   },
 });
 
@@ -20,7 +24,7 @@ export default class Secured extends Component {
 
   state = {
     probaResponceReceived: false,
-    probaPoints: ''
+    probaPoints: []
   }
 
   componentDidMount() {
@@ -48,36 +52,33 @@ export default class Secured extends Component {
   }
 
   renderItem() {
+    const getHeader = () => {
+      return <Text>{'My Title'}</Text>;
+  };
+
+  const getFooter = () => {
+    if (this.state.loading) {
+        return null;
+    }
+    return <Button
+    onPress={this.props.onLogoutPress}
+    title="Logout"
+  />;
+};
+      
     return (
       <ScrollView style={{ padding: 20 }}>
-        <View style={{
-          flex: 1,
-          width: 500,
-          height: 500,
-          justifyContent: 'space-between',
-        }}>
-          {
-            (
-              this.state.probaResponceReceived)
-              ? this.state.probaPoints.map((item) => {
-                return 
-                  <View style={styles.container} >
-                    <Text>{item.code} {item.name} {item.confirmUserId} {item.confirmDate}</Text>
-                  </View>
-              })
-              : <View style={{
-                flex: 1,
-                width: 100,
-                height: 100,
-              }} />
-
-          }
-        </View>
-        <Button
-          onPress={this.props.onLogoutPress}
-          title="Logout"
+        <View style={styles.container}>
+        <FlatList
+          data={this.state.probaPoints}
+          renderItem={({item}) => <Text style={styles.item}>{item.key} {item.code} {item.name} {item.confirmUserId} {item.confirmDate}</Text>}
+          ListHeaderComponent={getHeader}
+          ListFooterComponent={getFooter}
         />
-      </ScrollView>
-    )
+
+</View>
+
+</ScrollView>
+)
   }
 }
