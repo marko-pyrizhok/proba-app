@@ -14,15 +14,12 @@ const AppLoadingScreen = ({ navigation, isUserLoggedIn }) => (
     <TouchableWithoutFeedback onPress={() => handleClick(isUserLoggedIn, navigation)}>
         <View style={styles.page}>
             <View style={styles.titleBox}>
-                <Text>ALL BITS EQUAL</Text>
-                <Text>presents</Text>
-                <Text>The Expo Starter Kit</Text>
             </View>
             <View style={styles.contentBox}>
-                <Text>Touch Screen to start!</Text>
+                <Text>swipe to go through few pictures</Text>
             </View>
             <View style={styles.footer}>
-                <Text>written by Konrad Abe</Text>
+                <Text>button here to skip</Text>
             </View>
         </View>
     </TouchableWithoutFeedback>

@@ -24,7 +24,7 @@ const SceneLogin = ({
             : '...')
         if (isUserLoggedIn) {
             setTimeout(() => {
-                navigation.navigate('App')
+                navigation.navigate('Dashboard')
             }, 3000)
         }
     }, [isUserLoggedIn, storedUserName])

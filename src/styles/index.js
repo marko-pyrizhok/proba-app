@@ -59,6 +59,10 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'center',
     },
+    icon: {
+        width: 24,
+        height: 24,
+      },
 })
 
 export default styles
