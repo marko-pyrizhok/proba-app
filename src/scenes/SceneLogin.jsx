@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { Button, CheckBox, Input } from 'react-native-elements'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { userLogin } from '../redux/actions/user.actions'
+import { login } from '../redux/actions/user.actions'
 import Panel from '../components/Panel'
 import DefaultPage from '../components/DefaultPage'
 import styles from '../styles'
@@ -16,6 +16,7 @@ const SceneLogin = ({
     navigation,
 }) => {
     const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
     const [status, setStatus] = useState('...')
 
     useEffect(() => {
@@ -51,6 +52,8 @@ const SceneLogin = ({
 
                     <Input
                         placeholder="PASSWORD"
+                        value={password}
+                        onChangeText={(text) => setPassword(text)}
                         leftIcon={(
                             <Icon
                                 name="lock"
@@ -66,7 +69,7 @@ const SceneLogin = ({
                     />
                     <Button
                         title="LOGIN"
-                        onPress={() => login(userName || 'Anon')}
+                        onPress={() => login(userName || 'Anon', password)}
                     />
                     <Text>{status}</Text>
                 </View>
@@ -81,7 +84,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    login: (name) => dispatch(userLogin({ name })),
+    login: (name, password) => dispatch(login({ name, password })),
 })
 
 SceneLogin.defaultProps = {
