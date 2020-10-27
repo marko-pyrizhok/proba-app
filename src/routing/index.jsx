@@ -8,7 +8,6 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 
-import SceneHome from '../scenes/SceneHome'
 import SceneLogin from '../scenes/SceneLogin'
 import SceneLogOut from '../scenes/SceneLogout'
 import SceneRegister from '../scenes/SceneRegister'
@@ -18,7 +17,6 @@ import SceneGameRanking from '../scenes/SceneGameRanking'
 
 const AuthStack = createStackNavigator(
     {
-        Home: SceneHome,
         Login: SceneLogin,
         Logout: SceneLogOut,
         Register: SceneRegister,

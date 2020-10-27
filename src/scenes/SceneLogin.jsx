@@ -52,6 +52,10 @@ const LoginPage = (props) => (
                 <CheckBox title="Keep me signed in" name="ALWAYS" checked={false} />
                 <Button title="LOGIN" onPress={() => props.login(props.userName || 'Anon', props.password)} />
                 <Text>{props.status}</Text>
+                <Button
+                    title="Registration"
+                    onPress={() => props.navigation.navigate('Register')}
+                />
             </View>
         </Panel>
     </DefaultPage>
@@ -65,10 +69,6 @@ const _renderItem = ({ item }) => {
             <Text style={styles.text}>{item.text}</Text>
         </View>
     );
-}
-
-const _onDone = (showRealApp, setShowApp) => {
-    showRealApp = setShowApp(true)
 }
 
 const SceneLogin = ({
@@ -101,7 +101,8 @@ const SceneLogin = ({
                 password={password}
                 setPassword={setPassword}
                 status={status}
-                login={login} />
+                login={login}
+                navigation={navigation} />
         )
     } else {
         return <AppIntroSlider
