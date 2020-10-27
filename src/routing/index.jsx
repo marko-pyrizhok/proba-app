@@ -8,7 +8,6 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 
-import AppLoadingScreen from '../scenes/AppLoadingScreen'
 import SceneHome from '../scenes/SceneHome'
 import SceneLogin from '../scenes/SceneLogin'
 import SceneLogOut from '../scenes/SceneLogout'
@@ -26,7 +25,7 @@ const AuthStack = createStackNavigator(
     },
     {
         headerMode: 'none',
-        initialRouteName: 'Home',
+        initialRouteName: 'Login',
     }
 )
 
@@ -79,12 +78,11 @@ const DashboardDrawer = createDrawerNavigator(
 const AppNavigator = createAppContainer(
     createSwitchNavigator(
         {
-            AppLoading: AppLoadingScreen,
             Auth: AuthStack,
             Dashboard: DashboardDrawer,
         },
         {
-            initialRouteName: 'AppLoading',
+            initialRouteName: 'Auth',
         }
     )
 )
