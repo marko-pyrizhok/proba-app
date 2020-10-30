@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, View, Image } from 'react-native'
+import { Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Button, CheckBox, Input } from 'react-native-elements'
 import PropTypes from 'prop-types'
@@ -8,36 +8,7 @@ import { login } from '../redux/actions/user.actions'
 import Panel from '../components/Panel'
 import DefaultPage from '../components/DefaultPage'
 import styles from '../styles'
-import AppIntroSlider from 'react-native-app-intro-slider';
-
-const slides = [
-    {
-        key: 'k1',
-        title: 'title1',
-        text: 'text1',
-        image: {
-            uri:
-                'uri1 here',
-        },
-        titleStyle: styles.title,
-        textStyle: styles.text,
-        imageStyle: styles.image,
-        backgroundColor: '#F7BB64',
-    },
-    {
-        key: 'k2',
-        title: 'title2',
-        text: 'text2',
-        image: {
-            uri:
-                'uri2 here',
-        },
-        titleStyle: styles.title,
-        textStyle: styles.text,
-        imageStyle: styles.image,
-        backgroundColor: '#F7BB64',
-    }
-];
+import { IntroSlider } from '../components/IntoSlider'
 
 const LoginPage = (props) => (
     <DefaultPage isHome>
@@ -61,15 +32,7 @@ const LoginPage = (props) => (
     </DefaultPage>
 );
 
-const _renderItem = ({ item }) => {
-    return (
-        <View style={styles.slide}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Image source={item.image} />
-            <Text style={styles.text}>{item.text}</Text>
-        </View>
-    );
-}
+
 
 const SceneLogin = ({
     login,
@@ -105,12 +68,7 @@ const SceneLogin = ({
                 navigation={navigation} />
         )
     } else {
-        return <AppIntroSlider
-            renderItem={_renderItem}
-            data={slides}
-            onDone={() => setShowApp(true)}
-            showSkipButton={true}
-            onSkip={() => setShowApp(true)} />;
+        return <IntroSlider setShowApp={setShowApp}></IntroSlider>;
     }
 }
 
