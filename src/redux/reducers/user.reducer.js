@@ -15,14 +15,14 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_FAILURE: {
             return {
-                isLoggedIn: true,
+                isLoggedIn: false,
                 isLoggingIn: false,
                 user: {}
             }
         }
         case LOGIN_PENDING: {
             return {
-                isLoggedIn: true,
+                isLoggedIn: false,
                 isLoggingIn: true,
                 user: {},
             }

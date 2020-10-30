@@ -17,7 +17,7 @@ export const userLogout = () => ({
 
 export const login = (credentials) => async dispatch => {
 
-  const response = await fetch("http://192.168.0.8:8080/login", {
+  const response = await fetch("http://192.168.0.107:8080/login", {
     method: 'POST',
     headers: {
       Accept: 'application/json',
