@@ -11,7 +11,7 @@ const slides = [
         text: 'text1',
         image: {
             uri:
-                'uri1 here',
+                '../../assets/favicon.png',
         },
         titleStyle: styles.title,
         textStyle: styles.text,

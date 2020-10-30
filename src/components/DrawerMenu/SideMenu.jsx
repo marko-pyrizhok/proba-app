@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styles from './SideMenu.style';
-import {NavigationActions} from 'react-navigation';
-import {ScrollView, Text, View} from 'react-native';
+import { NavigationActions } from 'react-navigation';
+import { ScrollView, Text, View, Image } from 'react-native';
 
 class SideMenu extends Component {
   navigateToScreen = (route) => () => {
@@ -12,7 +12,7 @@ class SideMenu extends Component {
     this.props.navigation.dispatch(navigateAction);
   }
 
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -21,8 +21,12 @@ class SideMenu extends Component {
               Section 1
             </Text>
             <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle} onPress={this.navigateToScreen('Game')}>
-              Game
+              <Text style={styles.navItemStyle} onPress={this.navigateToScreen('Dashboard')}>
+            <Image
+              source={require('../../../assets/favicon.png')}
+              style={styles.icon}
+            />
+                Dashboard
               </Text>
             </View>
           </View>
@@ -32,10 +36,10 @@ class SideMenu extends Component {
             </Text>
             <View style={styles.navSectionStyle}>
               <Text style={styles.navItemStyle} onPress={this.navigateToScreen('User')}>
-              User
+                User
               </Text>
               <Text style={styles.navItemStyle} onPress={this.navigateToScreen('Ranking')}>
-              Ranking
+                Ranking
               </Text>
             </View>
           </View>

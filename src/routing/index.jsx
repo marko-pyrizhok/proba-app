@@ -14,6 +14,7 @@ import SceneGameHome from '../scenes/SceneGameHome'
 import SceneGameUser from '../scenes/SceneGameUser'
 import SceneGameRanking from '../scenes/SceneGameRanking'
 import SideMenu from '../components/DrawerMenu/SideMenu'
+import DashboardScene from '../scenes/DashboardScene';
 
 const AuthStack = createStackNavigator(
   {
@@ -28,10 +29,10 @@ const AuthStack = createStackNavigator(
 )
 
 const DashboardDrawer = createDrawerNavigator({
-  Game: {
-    screen: SceneGameHome,
+  Dashboard: {
+    screen: DashboardScene,
     navigationOptions: {
-      drawerLabel: 'Game',
+      drawerLabel: 'Dashboard',
       drawerIcon: (
         <Image
           source={require('../../assets/favicon.png')}
@@ -67,7 +68,7 @@ const DashboardDrawer = createDrawerNavigator({
 }, {
   drawerPosition: 'left',
   headerMode: 'none',
-  initialRouteName: 'Game',
+  initialRouteName: 'Dashboard',
   contentComponent: SideMenu
 }
 );

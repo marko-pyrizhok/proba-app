@@ -73,7 +73,7 @@ const SceneLogin = ({
 }
 
 const mapStateToProps = (state) => ({
-    storedUserName: state.user.name,
+    storedUserName: state.user.user.name,
     isUserLoggedIn: state.user.isLoggedIn,
 })
 

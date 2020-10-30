@@ -8,7 +8,7 @@ import styles from '../styles'
 import BottomNavBar from '../components/BottomNavBar'
 import TopUserBar from '../components/TopUserBar'
 
-const SceneDashboard = ({ storedUserName }) => (
+const DashboardScene = ({ storedUserName }) => (
     <DefaultPage isHome>
         <TopUserBar />
         <Panel>
@@ -18,7 +18,7 @@ const SceneDashboard = ({ storedUserName }) => (
             <View style={styles.headerPanel}>
                 <Text style={styles.headline}>DASHBOARD TIME!</Text>
                 <Text>
-                    {`Let's play a game, ${storedUserName}!`}
+                    {`Dashboard data for ${storedUserName}!`}
                 </Text>
             </View>
         </Panel>
@@ -30,8 +30,8 @@ const mapStateToProps = (state) => ({
     storedUserName: state.user.name,
 })
 
-SceneDashboard.propTypes = {
+DashboardScene.propTypes = {
     storedUserName: PropTypes.string.isRequired,
 }
 
-export default connect(mapStateToProps)(SceneDashboard)
+export default connect(mapStateToProps)(DashboardScene)
