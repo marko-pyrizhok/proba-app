@@ -4,25 +4,43 @@ import { Button } from 'react-native-elements'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
+import { logout } from '../../redux/actions/user.actions'
 
-const TopUserBar = ({ navigation, storedUserName }) => (
-    <View style={styles.topBar}>
-        <Text>
-            {`Logged in as ${storedUserName}`}
-        </Text>
-        <Button
-            title="Logout"
-            type="clear"
-            icon={{
-                name: 'exit-to-app',
-                size: 25,
-                color: 'lightblue',
-            }}
-            iconRight
-            onPress={() => navigation.navigate('Logout')}
-        />
-    </View>
-)
+
+class TopUserBar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const { navigation, storedUserName } = this.props;
+        return (
+            <View style={styles.topBar}>
+                <Text>
+                    {`Logged in as ${storedUserName}`}
+                </Text>
+                <Button
+                    title="Logout"
+                    type="clear"
+                    icon={{
+                        name: 'exit-to-app',
+                        size: 25,
+                        color: 'lightblue',
+                    }}
+                    iconRight
+                    onPress={() => {
+                        return this.doLogout(navigation)
+                    }} />
+            </View>
+        )
+    }
+
+    doLogout(navigation) {
+        // There can be an old state here, so logout renavigate to dashboard. Has to be fixed.
+        navigation.navigate('Logout')
+        return this.props.logout()
+    }
+}
 
 const styles = StyleSheet.create({
     topBar: {
@@ -40,7 +58,11 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state) => ({
-    storedUserName: state.user.name,
+    storedUserName: state.user.user.name,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    logout: () => dispatch(logout()),
 })
 
 TopUserBar.propTypes = {
@@ -50,4 +72,4 @@ TopUserBar.propTypes = {
     storedUserName: PropTypes.string.isRequired,
 }
 
-export default connect(mapStateToProps)(withNavigation(TopUserBar))
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(TopUserBar))

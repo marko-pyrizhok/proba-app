@@ -29,7 +29,7 @@ const userReducer = (state = initialState, action) => {
         }
         case LOGIN_SUCCESS: {
             return {
-                isLoggedIn: action.payload!={},
+                isLoggedIn: true,
                 isLoggingIn: false,
                 user: action.payload,
             }
@@ -37,6 +37,7 @@ const userReducer = (state = initialState, action) => {
         case LOGOUT: {
             return {
                 isLoggedIn: false,
+                isLoggingIn: false,
                 user: {}
             }
         }

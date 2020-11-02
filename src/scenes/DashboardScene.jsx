@@ -27,7 +27,7 @@ const DashboardScene = ({ storedUserName }) => (
 )
 
 const mapStateToProps = (state) => ({
-    storedUserName: state.user.name,
+    storedUserName: state.user.user.name,
 })
 
 DashboardScene.propTypes = {

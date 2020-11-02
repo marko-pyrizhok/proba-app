@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { userLogout } from '../redux/actions/user.actions'
+import { logout } from '../redux/actions/user.actions'
 import Panel from '../components/Panel'
 import DefaultPage from '../components/DefaultPage'
 import styles from '../styles'
@@ -33,7 +33,7 @@ const SceneLogOut = ({ navigation, logout }) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    logout: (name) => dispatch(userLogout({ name })),
+    logout: (name) => dispatch(logout({ name })),
 })
 
 SceneLogOut.propTypes = {
