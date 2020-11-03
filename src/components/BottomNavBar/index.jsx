@@ -19,6 +19,18 @@ const BottomNavBar = ({ navigation }) => (
             )}
             onPress={() => navigation.navigate('Game')}
         />
+        <Button
+            title="Proba"
+            type="clear"
+            icon={(
+                <Icon
+                    name="address-card"
+                    size={15}
+                    color="lightblue"
+                />
+            )}
+            onPress={() => navigation.navigate('Proba')}
+        />
 
         <Button
             title=" RANKING"

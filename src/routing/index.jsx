@@ -10,7 +10,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer'
 import SceneLogin from '../scenes/SceneLogin'
 import SceneLogOut from '../scenes/SceneLogout'
 import SceneRegister from '../scenes/SceneRegister'
-import SceneGameHome from '../scenes/SceneGameHome'
+import ProbaScene from '../scenes/ProbaScene'
 import SceneGameUser from '../scenes/SceneGameUser'
 import SceneGameRanking from '../scenes/SceneGameRanking'
 import SideMenu from '../components/DrawerMenu/SideMenu'
@@ -33,6 +33,18 @@ const DashboardDrawer = createDrawerNavigator({
     screen: DashboardScene,
     navigationOptions: {
       drawerLabel: 'Dashboard',
+      drawerIcon: (
+        <Image
+          source={require('../../assets/favicon.png')}
+          style={styles.icon}
+        />
+      ),
+    }
+  },
+  Proba: {
+    screen: ProbaScene,
+    navigationOptions: {
+      drawerLabel: 'Proba',
       drawerIcon: (
         <Image
           source={require('../../assets/favicon.png')}
