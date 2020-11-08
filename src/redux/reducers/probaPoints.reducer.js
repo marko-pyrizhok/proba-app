@@ -5,7 +5,8 @@ import {
 } from '../constants'
 
 const initialState = {
-    points: {},
+    points: [],
+    probaId: null,
     loading: false,
     hasErrors: false
 }
@@ -14,21 +15,24 @@ const probaReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_PROBA_POINTS: {
             return {
-                points: {},
+                points: [],
+                probaId: null,
                 loading: true,
                 hasErrors: false
             }
         }
         case GET_PROBA_POINTS_FAILURE: {
             return {
-                points: {},
+                points: [],
+                probaId: null,
                 loading: false,
                 hasErrors: true
             }
         }
         case GET_PROBA_POINTS_SUCCESS: {
             return {
-                points: action.payload,
+                points: action.payload.pointStateList,
+                probaId: action.payload.probaId,
                 loading: false,
                 hasErrors: false
             }

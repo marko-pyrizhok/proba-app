@@ -37,8 +37,8 @@ function ProbaScene({ dispatch, storedUserName, points, loading, hasErrors }) {
     )
 
     function renderPoints() {
-        if (loading) return <p>Loading posts...</p>
-        if (hasErrors) return <p>Unable to display posts.</p>
+        if (loading) return <Text>Loading posts...</Text>
+        if (hasErrors) return <Text>Unable to display posts.</Text>
         if (points && points.length > 0) {
             return points.map(point => <Tochka key={point.code} point={point} />)
         }
