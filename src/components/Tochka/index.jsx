@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native'
 import styles from '../../styles'
+import Swipeout from 'react-native-swipeout';
+
 
 export class Tochka extends React.Component {
     constructor(props) {
@@ -9,6 +11,12 @@ export class Tochka extends React.Component {
 
     render() {
         const { point, name } = this.props;
+
+        var swipeoutBtns = [
+            {
+              text: 'Button'
+            }
+          ] 
         return <View style={styles.constrainerCentered} key={point.code}>
             <Text >
                 {point.code}
@@ -22,6 +30,11 @@ export class Tochka extends React.Component {
             <Text >
                 {point.confirmDate}
             </Text>
+            <Swipeout right={swipeoutBtns}>
+  <View>
+    <Text>Swipe me left</Text>
+  </View>
+</Swipeout>
         </View>
     }
 }

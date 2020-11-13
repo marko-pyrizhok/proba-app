@@ -14,6 +14,13 @@ const DashboardScene = ({ storedUserName }) => (
         <Panel>
             <View style={styles.headerPanel}>
                 <Text style={styles.headline}>DASHBOARD TIME!</Text>
+                <Text 
+       style={{ fontFamily: "MyriadPro-Regular" }}>
+        Hello World
+     </Text><Text 
+       style={{ fontFamily: "MyriadPro-Bold" }}>
+        Hello World
+     </Text>
             </View>
             <View style={styles.headerPanel}>
                 <Text style={styles.headline}>DASHBOARD TIME!</Text>

@@ -24,13 +24,6 @@ export default function App() {
     return (
       <Provider store={store}>
         <StatusBar hidden />
-        <Text 
-       style={{ fontFamily: "MyriadPro-Regular" }}>
-        Hello World
-     </Text><Text 
-       style={{ fontFamily: "MyriadPro-Bold" }}>
-        Hello World
-     </Text>
         <Navigation />
       </Provider>
     )
