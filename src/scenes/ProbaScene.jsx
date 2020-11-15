@@ -10,7 +10,7 @@ import TopUserBar from '../components/TopUserBar'
 import { fetchProbaPoints } from '../redux/actions/proba.action'
 import { Tochka } from '../components/Tochka'
 
-function ProbaScene({ dispatch, storedUserName, points, loading, hasErrors }) {
+function ProbaScene({ dispatch, storedUserName, points, probaId, loading, hasErrors }) {
     useEffect(() => {
         dispatch(fetchProbaPoints())
     }, [dispatch])
@@ -40,7 +40,7 @@ function ProbaScene({ dispatch, storedUserName, points, loading, hasErrors }) {
         if (loading) return <Text>Loading posts...</Text>
         if (hasErrors) return <Text>Unable to display posts.</Text>
         if (points && points.length > 0) {
-            return points.map(point => <Tochka key={point.code} point={point} />)
+            return points.map(point => <Tochka key={point.code} point={point} probaId={probaId} />)
         }
 
     }
@@ -52,6 +52,7 @@ const mapStateToProps = (state) => ({
     storedUserName: state.user.user.name,
     loading: state.proba.loading,
     points: state.proba.points,
+    probaId: state.proba.probaId,
     hasErrors: state.proba.hasErrors,
 })
 

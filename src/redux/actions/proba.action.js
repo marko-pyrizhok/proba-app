@@ -23,12 +23,15 @@ const getHeader = async () => {
   let token = '';
   try {
     token = await AsyncStorage.getItem("id_token") || 'none';
-    return { 'Authorization': 'Bearer ' + token };
+    return { 'Authorization': 'Bearer ' + token,
+    Accept: 'application/json',
+    'Content-Type': 'application/json', };
   } catch (error) {
     // Error retrieving data
     console.log(error.message);
   }
 }
+
 export function fetchProbaPoints() {
   return async (dispatch) => {
     const header = await getHeader();
@@ -46,6 +49,30 @@ export function fetchProbaPoints() {
       dispatch(getProbaPointsSuccess(data))
     } catch (error) {
       dispatch(getProbaPointsFailure())
+    }
+  }
+}
+
+export function confirmProbaPoint(probaId, pointId) {
+  return async (dispatch) => {
+    const header = await getHeader();
+
+    try {
+      const date = new Date();
+      const response = await fetch('http://192.168.0.107:8080/my-proba-points',
+        {
+          method: 'POST',
+          headers: header,
+          body: JSON.stringify({
+            'probaId': probaId,
+            'pointId': pointId,
+            'confirmDate': date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()
+          }),
+        }
+      )
+      const data = await response.json()
+
+    } catch (error) {
     }
   }
 }

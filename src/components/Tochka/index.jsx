@@ -1,8 +1,9 @@
 import React from 'react';
 import { Text, View } from 'react-native'
 import styles from '../../styles'
+import tochkaStyles from './tochka.style'
 import Swipeout from 'react-native-swipeout';
-
+import { confirmProbaPoint } from '../../redux/actions/proba.action'
 
 export class Tochka extends React.Component {
     constructor(props) {
@@ -10,31 +11,29 @@ export class Tochka extends React.Component {
     }
 
     render() {
-        const { point, name } = this.props;
+        const { point, probaId } = this.props;
 
-        var swipeoutBtns = [
+        var swipeoutButtons = [
             {
-              text: 'Button'
+                text: 'Я Здав!',
+                onPress: confirmProbaPoint(probaId, point.id)
             }
-          ] 
-        return <View style={styles.constrainerCentered} key={point.code}>
-            <Text >
-                {point.code}
-            </Text>
-            <Text >
-                {point.name}
-            </Text>
-            <Text >
-                {point.confirmUserId}
-            </Text>
-            <Text >
-                {point.confirmDate}
-            </Text>
-            <Swipeout right={swipeoutBtns}>
-  <View>
-    <Text>Swipe me left</Text>
-  </View>
-</Swipeout>
+        ]
+        let evenRow = point.id % 2 == 0;
+
+        return <View
+            style={[styles.constrainerCentered]}
+            key={point.code}>
+            <Swipeout right={swipeoutButtons}>
+                <View>
+                    <Text>{point.code}</Text>
+                    <Text style={[tochkaStyles.cardStyleOdd, evenRow && tochkaStyles.cardStyleEven]}>
+                        {point.name}
+                    </Text>
+                    <Text>{point.confirmUserId}</Text>
+                    <Text>{point.confirmDate}</Text>
+                </View>
+            </Swipeout>
         </View>
     }
 }

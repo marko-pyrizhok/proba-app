@@ -1,6 +1,7 @@
 import {
   LOGIN_SUCCESS,
-  LOGOUT
+  LOGOUT,
+  URL_API_LOGIN
 } from '../constants';
 import { AsyncStorage } from 'react-native';
 
@@ -20,7 +21,7 @@ var STORAGE_KEY = 'id_token';
 
 export const login = (credentials) => async dispatch => {
 
-  const response = await fetch("http://192.168.0.107:8080/login", {
+  const response = await fetch(URL_API_LOGIN, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
