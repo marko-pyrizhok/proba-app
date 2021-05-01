@@ -1,3 +1,4 @@
+
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGIN_PENDING = 'LOGIN_PENDING';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -7,5 +8,3 @@ export const LOGOUT = 'LOGOUT';
 export const GET_PROBA_POINTS = 'GET_PROBA_POINTS';
 export const GET_PROBA_POINTS_FAILURE = 'GET_PROBA_POINTS_FAILURE';
 export const GET_PROBA_POINTS_SUCCESS = 'GET_PROBA_POINTS_SUCCESS';
-
-export const URL_API_LOGIN = "http://192.168.0.107:8080/login";

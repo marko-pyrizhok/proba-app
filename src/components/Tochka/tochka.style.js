@@ -9,6 +9,12 @@ const tochkaStyles = StyleSheet.create({
   cardStyleOdd: {
     backgroundColor: '#93959811'
   },
+  cardStyleMarked: {
+    backgroundColor: '#555555'
+  },
+  cardStyleConfirmed: {
+    backgroundColor: '#888888'
+  },
 })
 
 export default tochkaStyles

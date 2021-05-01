@@ -27,7 +27,11 @@ export class Tochka extends React.Component {
             <Swipeout right={swipeoutButtons}>
                 <View>
                     <Text>{point.code}</Text>
-                    <Text style={[tochkaStyles.cardStyleOdd, evenRow && tochkaStyles.cardStyleEven]}>
+                    <Text style={[
+                        tochkaStyles.cardStyleOdd, 
+                        evenRow && tochkaStyles.cardStyleEven, 
+                        !point.confirmUserId && point.confirmDate && tochkaStyles.cardStyleMarked,
+                        point.confirmUserId && point.confirmDate && tochkaStyles.cardStyleConfirmed]}>
                         {point.name}
                     </Text>
                     <Text>{point.confirmUserId}</Text>
