@@ -5,6 +5,11 @@ import {
 } from '../constants';
 import { AsyncStorage } from 'react-native';
 
+import { 
+  URL_API_GET_LAST_OPEN_PROBA_POINT_LIST,
+  URL_API_MARK_PROBA_POINT
+} from '../constants/environment';
+
 
 export const getProbaPoints = () => ({
   type: GET_PROBA_POINTS,
@@ -38,7 +43,7 @@ export function fetchProbaPoints() {
     dispatch(getProbaPoints())
 
     try {
-      const response = await fetch('http://192.168.0.107:8080/my-last-proba-points',
+      const response = await fetch(URL_API_GET_LAST_OPEN_PROBA_POINT_LIST,
         {
           method: 'GET',
           headers: header
@@ -56,23 +61,32 @@ export function fetchProbaPoints() {
 export function confirmProbaPoint(probaId, pointId) {
   return async (dispatch) => {
     const header = await getHeader();
-
+    dispatch(getProbaPoints())
     try {
       const date = new Date();
-      const response = await fetch('http://192.168.0.107:8080/my-proba-points',
+      const response = await fetch(URL_API_MARK_PROBA_POINT,
         {
           method: 'POST',
           headers: header,
           body: JSON.stringify({
             'probaId': probaId,
             'pointId': pointId,
-            'confirmDate': date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()
+            'confirmDate': toYYYYMMDD(date)
           }),
         }
       )
-      const data = await response.json()
+      const data = await response.json();
 
+      dispatch(getProbaPointsSuccess(data));
     } catch (error) {
+      console.log(error);
     }
   }
+}
+
+const toYYYYMMDD = (d) => {
+  var yyyy = d.getFullYear().toString();
+  var mm = (d.getMonth() + 101).toString().slice(-2);
+  var dd = (d.getDate() + 100).toString().slice(-2);
+  return `${yyyy}-${mm}-${dd}`;
 }
