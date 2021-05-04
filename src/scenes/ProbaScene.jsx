@@ -8,7 +8,7 @@ import styles from '../styles'
 import BottomNavBar from '../components/BottomNavBar'
 import TopUserBar from '../components/TopUserBar'
 import { fetchProbaPoints } from '../redux/actions/proba.action'
-import { Tochka } from '../components/Tochka'
+import  Tochka from '../components/Tochka/tochka.container'
 
 function ProbaScene({ dispatch, storedUserName, points, probaId, loading, hasErrors }) {
     useEffect(() => {
@@ -37,10 +37,10 @@ function ProbaScene({ dispatch, storedUserName, points, probaId, loading, hasErr
     )
 
     function renderPoints() {
-        if (loading) return <Text>Loading posts...</Text>
-        if (hasErrors) return <Text>Unable to display posts.</Text>
+        if (loading) return <Text>Loading points...</Text>
+        if (hasErrors) return <Text>Unable to display points.</Text>
         if (points && points.length > 0) {
-            return points.map(point => <Tochka key={point.code} point={point} probaId={probaId} />)
+            return points.map(point => <Tochka key={point.code} point={point} probaId={probaId} dispatch={dispatch}/>)
         }
 
     }

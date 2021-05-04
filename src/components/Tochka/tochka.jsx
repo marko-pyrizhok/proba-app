@@ -3,7 +3,8 @@ import { Text, View } from 'react-native'
 import styles from '../../styles'
 import tochkaStyles from './tochka.style'
 import Swipeout from 'react-native-swipeout';
-import { confirmProbaPoint } from '../../redux/actions/proba.action'
+import PropTypes from 'prop-types';
+
 
 export class Tochka extends React.Component {
     constructor(props) {
@@ -11,12 +12,12 @@ export class Tochka extends React.Component {
     }
 
     render() {
-        const { point, probaId } = this.props;
+        const { confirmProbaPoint, point, probaId } = this.props;
 
         var swipeoutButtons = [
             {
                 text: 'Я Здав!',
-                onPress: confirmProbaPoint(probaId, point.id)
+                onPress: ()=>confirmProbaPoint(probaId, point.id)
             }
         ]
         let evenRow = point.id % 2 == 0;
@@ -42,4 +43,6 @@ export class Tochka extends React.Component {
     }
 }
 
-export default Tochka;
+Tochka.propTypes = {
+    confirmProbaPoint: PropTypes.func.isRequired
+  };
