@@ -14,7 +14,7 @@ export class Tochka extends React.Component {
   render() {
     const { confirmProbaPoint, point, probaId } = this.props;
 
-    var swipeoutButtons = [
+    const buttonsForInitialTochka = [
       {
         component: (
           <View
@@ -33,6 +33,7 @@ export class Tochka extends React.Component {
         onPress: () => confirmProbaPoint(probaId, point.id),
       },
     ];
+    var swipeoutButtons = buttonsForInitialTochka;
     let evenRow = point.id % 2 == 0;
 
     return (

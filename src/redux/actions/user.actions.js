@@ -1,11 +1,11 @@
 import {
   LOGIN_SUCCESS,
   LOGOUT,
-} from '../constants'
+} from '../../constants'
 
 import {
   URL_API_LOGIN
-} from '../constants/environment';
+} from '../../constants/environment';
 import { AsyncStorage } from 'react-native';
 
 export const userLogin = ({ name }) => ({

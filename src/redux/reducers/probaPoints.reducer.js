@@ -2,7 +2,7 @@ import {
     GET_PROBA_POINTS,
     GET_PROBA_POINTS_FAILURE,
     GET_PROBA_POINTS_SUCCESS
-} from '../constants'
+} from '../../constants'
 
 const initialState = {
     points: [],

@@ -2,13 +2,13 @@ import {
   GET_PROBA_POINTS,
   GET_PROBA_POINTS_FAILURE,
   GET_PROBA_POINTS_SUCCESS
-} from '../constants';
+} from '../../constants';
 import { AsyncStorage } from 'react-native';
 
 import { 
   URL_API_GET_LAST_OPEN_PROBA_POINT_LIST,
   URL_API_MARK_PROBA_POINT
-} from '../constants/environment';
+} from '../../constants/environment';
 
 
 export const getProbaPoints = () => ({

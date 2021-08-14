@@ -3,7 +3,7 @@ import {
     LOGIN_PENDING,
     LOGIN_SUCCESS,
     LOGOUT
-} from '../constants'
+} from '../../constants'
 
 const initialState = {
     isLoggedIn: false,
